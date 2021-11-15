@@ -1,10 +1,14 @@
 class Jogador{
 
-    constructor(){};
+    constructor(){
+        this.indice = null;
+        this.distancia = 0;
+        this.nome = null;
+    }
 
     obterContagem(){
         var contagemJogadoresRef = bancoDados.ref('playerCount');
-        contagemJogadoresRef.on("value", function(data){
+        contagemJogadoresRef.on("value", (data)=>{
             contagemJogadores = data.val();
         })
     }
@@ -15,10 +19,18 @@ class Jogador{
         })
     }
 
-    atualizar(nome){
-        var indiceJogador = "player" + contagemJogadores;
+    atualizarDados(){
+        var indiceJogador = "players/player" + this.indice;
         bancoDados.ref(indiceJogador).set({
-            name:nome
+            nome: this.nome,
+            distancia: this.distancia
+        })
+    }
+
+    static obterInfoJogadores(){
+        var infoJogadoresRef = bancoDados.ref('players');
+        infoJogadoresRef.on("value",(data)=>{
+            todosJogadores = data.val();
         })
     }
 }

@@ -1,35 +1,38 @@
 class Formulario{
-    constructor(){}
+    constructor(){
+        this.entrada = createInput("Nome");
+        this.botao = createButton('Jogar');
+        this.saudacao = createElement('h3');
+    }
 
-    display(){
+    esconder(){
+        this.entrada.hide()
+        this.botao.hide()
+        this.saudacao.hide()
+    }
+    
+    mostrar(){
         
         var titulo = createElement("h2");
         titulo.html("Car Racing Game");
         titulo.position(130,0);
 
-        var entrada = createInput("Nome");
-        entrada.position(130,160);
+        this.entrada.position(130,160);
+        this.botao.position(250,200);
 
-        var botao = createButton('Play');
-        botao.position(250,200);
+        this.botao.mousePressed(()=>{
+            this.entrada.hide();
+            this.botao.hide();
 
-        var saudacao = createElement('h3');
-
+            jogador.nome = this.entrada.value();
         
-        
-
-        botao.mousePressed(function(){
-            entrada.hide();
-            botao.hide();
-
-            var nome = entrada.value();
-
-            contagemJogadores+=1;
-            jogador.atualizar(nome);
+            contagemJogadores += 1;
+            jogador.indice = contagemJogadores;
+            jogador.atualizarDados();
             jogador.atualizarContagem(contagemJogadores);
 
-            saudacao.html("Olá "+ nome);
-            saudacao.position(130,160);
+            this.saudacao.html("Olá "+ jogador.nome);
+            this.saudacao.position(130,160);
         });
 
     }

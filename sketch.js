@@ -2,7 +2,10 @@ var canvas;
 
 var estadoJogo = 0;
 var contagemJogadores;
+var todosJogadores;
+var distacia = 0;
 var bancoDados;
+
 var formulario, jogador, jogo;
 
 
@@ -16,9 +19,16 @@ function setup(){
 }
 
 function draw(){
-  background("white");
+  if(contagemJogadores === 4){
+    jogo.atualizarEstado(1);
+  }
  
+  if(estadoJogo === 1){
+    clear();
+    jogo.jogar();
+  }
   
+  console.log(contagemJogadores)
 }
 
 
