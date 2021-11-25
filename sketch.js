@@ -3,14 +3,13 @@ var canvas;
 var estadoJogo = 0;
 var contagemJogadores;
 var todosJogadores;
-var distacia = 0;
 var bancoDados;
-
+var carro1, carro2, carro3, carro4, carros;
 var formulario, jogador, jogo;
 
 
 function setup(){
-  canvas = createCanvas(400,400);
+  canvas = createCanvas(displayWidth-20,displayHeight-95);
   bancoDados = firebase.database();
 
   jogo = new Jogo();
@@ -26,9 +25,9 @@ function draw(){
   if(estadoJogo === 1){
     clear();
     jogo.jogar();
+   
   }
-  
-  console.log(contagemJogadores)
+ 
 }
 
 
