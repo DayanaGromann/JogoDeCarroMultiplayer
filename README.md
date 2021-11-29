@@ -1,2 +1,0 @@
-# synchronousBallMovement
-Ball moving synchronously

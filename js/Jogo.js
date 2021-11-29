@@ -44,12 +44,10 @@ class Jogo{
 
     jogar(){
         formulario.esconder();
-        background("#c68767")
-        
+        background(0)
 
-        textSize(30);
-        text("Jogo Iniciado", 120, 100);
         Jogador.obterInfoJogadores();
+        jogador.obterRanking();
 
         if(todosJogadores !== undefined){
 
@@ -83,8 +81,10 @@ class Jogo{
             jogador.atualizarDados();
         }
 
-        if(jogador.distancia > 3860){
+        if(jogador.distancia > 3660){
             estadoJogo = 2;
+            jogador.ranking += 1; //cada jogador que cruzar a linha de chegada receberá 1 a mais no ranking, que o jogador anterior
+            Jogador.atualizarRanking(jogador.ranking);//O ranking do último jogador é adicionado ao BD, para sabermos qual deverá ser o ranking do próximo a cruzar a linha. Observe que este método é estático, portando o chamamos para a classe(j maiúsculo) e não para o objeto criado com ela.
         }
 
         drawSprites();
@@ -92,5 +92,6 @@ class Jogo{
 
     finalizar(){
         console.log("Fim do jogo");
+        console.log(jogador.ranking);
     }
 }

@@ -4,6 +4,7 @@ class Jogador{
         this.indice = null;
         this.distancia = 0;
         this.nome = null;
+        this.ranking = null;
     }
 
     obterContagem(){
@@ -24,6 +25,18 @@ class Jogador{
         bancoDados.ref(indiceJogador).set({
             nome: this.nome,
             distancia: this.distancia
+        })
+    }
+
+    obterRanking(){
+        bancoDados.ref('CarsAtEnd').on('value', (data)=>{
+            this.ranking = data.val();
+        })
+    }
+
+    static atualizarRanking(ranking){
+        bancoDados.ref('/').update({
+            CarsAtEnd: ranking
         })
     }
 
