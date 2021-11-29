@@ -68,6 +68,8 @@ class Jogo{
                 carros[indice-1].y = y;
 
                if(indice === jogador.indice){
+                   fill("red");
+                   ellipse(x,y,60);
                    carros[indice-1].shapeColor = "red";
                    camera.position.x = displayWidth/2;
                    camera.position.y = carros[indice-1].y - 300

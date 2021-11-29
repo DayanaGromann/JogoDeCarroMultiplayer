@@ -4,6 +4,7 @@ class Formulario{
         this.botao = createButton('Jogar');
         this.saudacao = createElement('h3');
         this.titulo = createElement("h1");
+        this.reiniciar = createButton("Reiniciar");
     }
 
     esconder(){
@@ -17,7 +18,7 @@ class Formulario{
         
         this.titulo.html("Car Racing Game");
         this.titulo.position(displayWidth/2 - 80, displayHeight/4);
-       
+        this.reiniciar.position(displayWidth-100, 20);
         this.entrada.position(displayWidth/2 - 50 , displayHeight/2 - 80);
         this.botao.position(displayWidth/2 + 20, displayHeight/2-50);
 
@@ -36,5 +37,9 @@ class Formulario{
             this.saudacao.position(displayWidth/2 - 70, displayHeight/2 - 80);
         });
 
+        this.reiniciar.mousePressed(()=>{
+            jogador.atualizarContagem(0);
+            jogo.atualizarEstado(0);
+        });
     }
 } 
